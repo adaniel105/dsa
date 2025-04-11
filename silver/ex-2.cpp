@@ -277,3 +277,47 @@ int main(){
 	}
 	cout << "IMPOSSIBLE";
 }
+
+//haybales
+#include <bits/stdc++.h>
+using namespace std;
+
+void setIO(string name = "") {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	if (!name.empty()) {
+		freopen((name + ".in").c_str(), "r", stdin);
+		freopen((name + ".out").c_str(), "w", stdout);
+	}
+}
+
+
+int main(){
+    setIO("haybales");
+    int n , q;
+    cin >> n >> q;
+    vector<int> bales(n);
+    vector<pair<int,int>> queries;
+    for(int i = 0; i < n; i++){
+        cin >> bales[i];
+    }
+    
+    sort(bales.begin(), bales.end());
+
+    for(int i = 0; i < q; i++){
+        int a, b;
+        cin >> a >> b;
+        queries.push_back({a,b});
+    }
+
+    for(int i = 0; i < q; i++){
+        int low = queries[i].first;
+        int high = queries[i].second;   
+        cout << upper_bound(bales.begin(), bales.end(), high) - lower_bound(bales.begin(), bales.end(), low) << "\n";       
+    }
+   
+}
+
+
+
+
