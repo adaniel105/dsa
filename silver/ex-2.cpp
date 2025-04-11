@@ -278,7 +278,7 @@ int main(){
 	cout << "IMPOSSIBLE";
 }
 
-//haybales
+//https://usaco.org/index.php?page=viewproblem2&cpid=666
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -290,7 +290,6 @@ void setIO(string name = "") {
 		freopen((name + ".out").c_str(), "w", stdout);
 	}
 }
-
 
 int main(){
     setIO("haybales");
