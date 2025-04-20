@@ -367,6 +367,53 @@ int main()
 }
 
 
+//https://usaco.org/index.php?page=viewproblem2&cpid=594
+//unfinished.
+#include <bits/stdc++.h>
+using namespace std;
 
+void setIO(string name = "") {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	if (!name.empty()) {
+		freopen((name + ".in").c_str(), "r", stdin);
+		freopen((name + ".out").c_str(), "w", stdout);
+	}
+}
+
+bool check(int m){
+    return( m - curr >= start || m + curr >= end);
+}
+
+
+int main(){
+    int N, K; cin >> N >> K;
+    vector<int> bales(N);
+    for(int i =0; i <N; i++) cin >> bales[i];
+    sort(bales.begin(), bales.end());
+    int splitIndex = N/K + 1;
+    int start = 0; int end = splitIndex; int curr = 0;
+    while ( end < N ){
+        curr = max(bales[end] - bales[start], curr);   
+        start = start + N; 
+        end = end + N;
+    }
+    if (end > N){
+        end = N;
+        curr = max(end - start , curr);
+    }
+
+    //once we get curr, we set curr to be our maxR,
+    //then we can search for the last true R that satisfies the eqn.
+    int lo = 1; int hi = curr;
+    while(lo < hi){
+        int mid = (lo + hi)/2;
+        if( mid - curr >= start || mid + curr >= end){
+            lo = mid;
+        }else{
+            hi = mid - 1;
+        }
+    }
+}/
 
 
