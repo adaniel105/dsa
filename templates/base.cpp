@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long				ll;
-typedef long double         	ld;
-typedef pair <int, int>     	pii;
-typedef pair <ll, ll>       	pll;
+typedef long long		ll;
+typedef long double ld;
+typedef pair <int, int>	pii;
+typedef pair <ll, ll> 	pll;
 typedef vector<int>				vi;
 typedef vector<ll>				vll;
 typedef vector<vector<int>>		vvi;
@@ -17,8 +17,8 @@ typedef vector<pair<int,int>>	vpi;
 # define all(x)     x.begin(), x.end()
 # define kill(x)    return cout << x << endl, 0
 # define sz(x)      int(x.size())
-# define pb			push_back
-# define rsz		resize
+# define pb			       push_back
+# define rsz		       resize
 # define lc         id << 1
 # define rc         id << 1 | 1
 # define FOR(i,a,b)		for(int i=(a); i<(b); ++i)
