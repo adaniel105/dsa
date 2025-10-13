@@ -1,1 +1,1 @@
-cf/usaco/dsa general
+codeforces/usaco/leetcode
