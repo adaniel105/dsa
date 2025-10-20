@@ -110,7 +110,7 @@ int main() {
 	printf("%d\n", std::max({counter[0], counter[1], counter[2]}));
 }
 
-// 5/10 passed
+// 5/10 
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -192,7 +192,7 @@ int main(void)
   cout << answer << "\n";
 }
 
-//usaco bronze: diamond-collector
+//diamond-collector problem
 #include <algorithm>
 #include <cstdio>
 #include <iostream>
@@ -343,7 +343,7 @@ int main(){
 }
 
 
-//7https://usaco.org/index.php?page=viewproblem2&cpid=964
+//https://usaco.org/index.php?page=viewproblem2&cpid=964
 #include <bits/stdc++.h>
 using namespace std;
 
