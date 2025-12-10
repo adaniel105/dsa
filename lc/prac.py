@@ -1,32 +1,34 @@
-# from collections import defaultdict
-# from typing import List
-# def topKFrequent(nums: List[int], k: int) -> List[int]:
-#     ## count elements using a hash map
-#     freq = defaultdict(int)
-#     n = len(nums)
-#     for num in nums:
-#         freq[num] += 1
+## topk frequent (hashmap)
+from collections import defaultdict
+from typing import List
+def topKFrequent(nums: List[int], k: int) -> List[int]:
+    ## count elements using a hash map
+    freq = defaultdict(int)
+    n = len(nums)
+    for num in nums:
+        freq[num] += 1
     
-#     buckets = [[] for _ in range(n+1)]
+    buckets = [[] for _ in range(n+1)]
 
-#     for num, frequency in freq.items(): ## dict contains nums as keys an+d freq as val
-#         buckets[frequency].append(num) ##basically swap keys and values into buckets
-#         print(buckets[frequency])
+    for num, frequency in freq.items(): ## dict contains nums as keys an+d freq as val
+        buckets[frequency].append(num) ##basically swap keys and values into buckets
+        print(buckets[frequency])
 
-#     result = []
-#     while n > -1 and k > 0:
-#         if buckets[n]:
-#             result.append(buckets[n].pop())
-#             k -= 1
-#         else:
-#             n -= 1
+    result = []
+    while n > -1 and k > 0:
+        if buckets[n]:
+            result.append(buckets[n].pop())
+            k -= 1
+        else:
+            n -= 1
 
-#     return result
-
-
-# print(topKFrequent([1,1,1,2,2,2,2,2,3,3,4,4,4], 2))
+    return result
 
 
+print(topKFrequent([1,1,1,2,2,2,2,2,3,3,4,4,4], 2))
+
+
+## happy number (hashmap)
 def isHappy(n):
 
     visited = set()
@@ -88,7 +90,7 @@ def merge(left_arr, right_arr) -> List[arr]:
     return result   
 
 
-##first non-repeating character in a string
+##first non-repeating character in a string (sorting)
 ## the counter data struct basically uses values as keys and stores frequencies as values.
 from defaultdict import Counter
 def firstUnique(s):
@@ -114,7 +116,7 @@ def two_sum(nums: List[int], target: int) -> List[int]:
 
     return []
 
-
+##intersection of sets
 def intersection(num1: List[int], num2: List[int]) -> List[int]:
     ## dont do in place.
     set1 = set(num1)
