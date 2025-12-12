@@ -123,7 +123,7 @@ def intersection(num1: List[int], num2: List[int]) -> List[int]:
 
     return [x for x in set1 if x in set(num2)]
 
-
+## contains duplicate characters
 def containsDuplicate()
 
 
