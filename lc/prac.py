@@ -1,3 +1,17 @@
+## check the inclusion of string 1 inside of string 2
+def checkIncl(s1: str, s2: str):
+    ## count s1 char frequencies
+    ## create sliding window to track freq in s2
+    ## resize if window exceeds s1 
+
+    s1_count = [0] * 26
+
+
+
+
+
+
+
 ## topk frequent (hashmap)
 from collections import defaultdict
 from typing import List
