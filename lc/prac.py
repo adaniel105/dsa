@@ -1,3 +1,41 @@
+## trapping rain water in boundaries
+from typing import List
+
+def trap(height: List[int]) -> int:
+
+    n = len(height)
+    if n <= 2:
+        return 0
+        
+    l, r = 0, n - 1  # Left and right pointers
+    max_l = height[0]  # Maximum height from left
+    max_r = height[n-1]  # Maximum height from right
+    result = 0
+ 
+    while l < r:
+        if height[l] < height[r]:
+            # If left height is smaller, process left side
+            max_l = max(max_l, height[l])
+            result += max_l - height[l]  # Add trapped water
+            l += 1
+        else:
+            # If right height is smaller or equal, process right side
+            max_r = max(max_r, height[r])
+            result += max_r - height[r]  # Add trapped water
+            r -= 1
+
+    return result
+
+# Test the function
+test_height = [0,1,0,2,1,0,1,3,2,1,2,1]
+print(f"Water trapped: {trap(test_height)}")  # Output: 6
+
+
+
+
+
+
+
 ## check the inclusion of string 1 inside of string 2
 def checkIncl(s1: str, s2: str):
     ## count s1 char frequencies
