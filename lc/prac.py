@@ -1,3 +1,141 @@
+def search_matrix(matrix: List[List[int]], target: int) -> bool:
+    if not matrix or not matrix[0]:
+        return False
+    m , n = len(matrix), len(matrix[0])
+    left, right = 0, m * n - 1
+    while left <= right:
+        mid = (left + right) // 2
+        row, col = mid // n, mid % n
+        result = matrix[row][col]
+        if result == target:
+            return True
+        elif result < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return False
+
+
+from typing import List
+
+def search_range(arr: List[int], target: int) -> List[int]:
+    ##we just have to find the bounds of the target
+    def find_bound(n: bool):
+        left, right = 0, n - 1
+        result = -1
+
+        while left <= right:
+            mid = (left + right) // 2
+            if arr[mid] == target:
+                result = mid
+                if n:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            elif arr[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return result
+    return [find_bound(True), find_bound(False)]
+
+def search_rotated(arr: list[int], target: int) -> int:
+    left, right = 0, len(arr) - 1
+
+    if len(arr) == 0:
+        return -1
+
+    ##figure out which half is rotated
+    while left <= right:
+        mid = (left + right) // 2
+
+        if arr[mid] == target:
+            return mid
+
+        if arr[left] <= arr[mid]:
+            if arr[left] <= target < arr[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+            
+        else:
+            if arr[mid] < target <= arr[right]:
+                left = mid + 1
+            else:
+                right = mid + 1
+
+    return -1
+
+
+# Finds index of element closest to target in a sorted array
+def find_closest(arr: list[int], target: int) -> int:
+    if len(arr) == 1:
+        return 0
+    
+    left, right = 0, len(arr) - 1
+
+    while left + 1 <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid
+        elif arr[mid] > target:
+            right = mid
+
+    #compare abs values of the last two values; the arr only contains two values atp
+    if abs(arr[left] - target) <= abs(arr[right] - target):
+        return left
+    else:
+        return right
+
+## find the kth largest element in sorted array
+from typing import List
+import random
+
+def findKthLargest(nums: List[int], k: int) -> int:
+    def quickSelect(nums, k):
+        pivot = random.choice(nums)
+
+        ##partion into three
+        left = [x for x in nums if x > pivot]
+        mid = [x for x in nums if x == pivot]
+        right = [x for x in nums if x < pivot]
+
+        ##you search through the partitions recursively for k
+        ##it resolves to the pivot point
+        if len(left) < k:
+            return quickSelect(left, k)
+        elif len(left) + len(mid) < k:
+            return quickSelect(right, k - len(left) - len(mid))
+        else:
+            return pivot
+    
+    return quickSelect(nums, k)
+
+
+
+
+def binary_search(nums: List[int], k:int) -> int:
+    start, end = 0, len(nums) - 1
+
+    while start <= end:
+        mid = (start + end) // 2
+        if nums[mid] < k:
+            start = mid + 1
+        elif nums[mid] > k:
+            end = mid - 1
+        elif nums[mid] == k:
+            return mid
+        
+    return -1 
+
+        
+print(binary_search([1,2,3,4,5], 3))
+
+
+
 ## trapping rain water in boundaries
 from typing import List
 
@@ -693,7 +831,7 @@ def groupAnagrams(strs: List[int]) -> List[List[int]]:
 
         ##count freq in string, set alphabet as index
          for c in s:
-         count[ord(c) - ord["a"]] += 1
+            count[ord(c) - ord["a"]] += 1
 
         res[tuple[count]].append(s)
     return list(res.values())
