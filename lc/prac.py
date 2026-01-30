@@ -573,18 +573,18 @@ we use manacher
 
 
 
-# # ##character replacement
-# # #longest repeating character replacement
-# # from collections import defaultdict
-# # def characterReplacement(s: str, k :int):
-# #     count = defaultdict(s)
-# #     left = right = 0
+# ##character replacement
+# #longest repeating character replacement
+# from collections import defaultdict
+# def characterReplacement(s: str, k :int):
+#     count = defaultdict(s)
+#     left = right = 0
 
-# #     max_count = 0
+#     max_count = 0
 
-add new character to window
-check if character has highest freq, update the max count if so
-resize window if character outside window
+# add new character to window
+# check if character has highest freq, update the max count if so
+# resize window if character outside window
     while right < len(s):
         count[s[right]] += 1
         max_count = max(max_count, count[s[right]])
