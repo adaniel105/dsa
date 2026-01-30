@@ -1,23 +1,80 @@
+from typing import List, Tuple
+
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        m , n = len(matrix), len(matrix[0])
+        zero_rows = set()
+        zero_cols = set()
+
+        ##first pass
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    zero_rows.add(m)
+                    zero_cols.add(n)
+        
+        #second pass: set selected rows to 
+
+
+class Matrix:
+    def deg_90_rotate(self, matrix: List[List[int]]) -> None:
+        n = len(matrix)
+
+        ##rotate by row
+        for i in range(n // 2):
+            j = n - i - 1
+            matrix[i], matrix[j] = matrix[j], matrix[i]
+
+        ##swap elements across diagonal
+        for i in range(n):
+            for j in range(i+1, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+
+##implementation of a time based kv cache
+class TimeMap:
+    def __init__(self):
+        self.time_series = defaultdict(list)
+
+    def set(self, key: str, val: str, timestamp: int):
+        self.time_series[key].append([val, timestamp])
+
+    def get(self, key, timestamp):
+        stored_values : List[Tuple[int, str]] = self.time_series[key]
+        latest_valid_value: str = " "
+
+        left, right = 0, len(stored_values) - 1
+        while left <= right:
+            current_value, current_timestamp = stored_values[key]
+            mid = (left + right) // 2
+            if current_timestamp <= timestamp:
+                latest_valid_value = current_value
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return latest_valid_value
+             
+
+##obv you should be able to modify this to extract values and other things
 def search_matrix(matrix: List[List[int]], target: int) -> bool:
     if not matrix or not matrix[0]:
         return False
-    m , n = len(matrix), len(matrix[0])
+    m, n = len(matrix), len(matrix[0])
     left, right = 0, m * n - 1
+
     while left <= right:
         mid = (left + right) // 2
         row, col = mid // n, mid % n
-        result = matrix[row][col]
-        if result == target:
+        value = matrix[row][col]
+
+        if value == target:
             return True
-        elif result < target:
+        elif value < target:
             left = mid + 1
         else:
             right = mid - 1
-
     return False
-
-
-from typing import List
 
 def search_range(arr: List[int], target: int) -> List[int]:
     ##we just have to find the bounds of the target
@@ -528,52 +585,52 @@ we use manacher
 add new character to window
 check if character has highest freq, update the max count if so
 resize window if character outside window
-# #     while right < len(s):
-# #         count[s[right]] += 1
-# #         max_count = max(max_count, count[s[right]])
-# #         right += 1
+    while right < len(s):
+        count[s[right]] += 1
+        max_count = max(max_count, count[s[right]])
+        right += 1
 
-# #     if right - left - max_count > k:
-# #         ## mov left pos by 1
-# #         left += 1
-# #         count[s[left]] -= 1
+    if right - left - max_count > k:
+        ## mov left pos by 1
+        left += 1
+        count[s[left]] -= 1
 
-# #     return right - left
+    return right - left
 
-# # #diff btwn dict and defaultdict is that defaultdict generates keys for ones that do not have
+#diff btwn dict and defaultdict is that defaultdict generates keys for ones that do not have
 
-# # ##length of longest substring without repeating
-# # def longestSubstring(s: str):
-# #     #define a dict to store the index of each character
-# #     # if the character is seen and at the start of the index window, start over (place start at curr idx)
-# #     char_index = {}
-# #     start = 0
-# #     max_length = 0
+##length of longest substring without repeating
+def longestSubstring(s: str):
+    #define a dict to store the index of each character
+    # if the character is seen and at the start of the index window, start over (place start at curr idx)
+    char_index = {}
+    start = 0
+    max_length = 0
 
-# #     for end, char in enumerate(s):
-# #         if char is in char_index and char_index[char] >= start:
-# #             start = char_index[char] + 1
-# #         else:
-# #             ## we are basically calculating the longest substring in the window, so when we see the first unique character = start over
-# #             max_length = max(max_length, end - start + 1 )
+    for end, char in enumerate(s):
+        if char is in char_index and char_index[char] >= start:
+            start = char_index[char] + 1
+        else:
+            ## we are basically calculating the longest substring in the window, so when we see the first unique character = start over
+            max_length = max(max_length, end - start + 1 )
 
-# #         char_index[char] = end
+        char_index[char] = end
 
-# #     return max_length
+    return max_length
 
 
 
-# # ##max subarray avg (same with max subarray sum let's be honest)
+##max subarray avg (same with max subarray sum let's be honest)
 
-# # def maxAvg(nums: list[float], k: int) -> int :
-# #     curr_sum = sum(nums[:k])
-# #     max_sum = curr_sum
+def maxAvg(nums: list[float], k: int) -> int :
+    curr_sum = sum(nums[:k]) ##partial sum up to k that is
+    max_sum = curr_sum
     
-# #     for i in range(k, len(nums)):
-# #         curr_sum = curr_sum - nums[i - k] + nums[i] ## we add nums i to add the number at the window
-# #         max_sum = max(max_sum, curr_sum)
+    for i in range(k, len(nums)):
+        curr_sum = curr_sum - nums[i - k] + nums[i] ## we add nums i to add the number at the window
+        max_sum = max(max_sum, curr_sum)
 
-# #     return max_sum / k
+    return max_sum / k
 
 
 
