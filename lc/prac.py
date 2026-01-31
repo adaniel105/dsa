@@ -13,7 +13,16 @@ class Solution:
                     zero_rows.add(m)
                     zero_cols.add(n)
         
-        #second pass: set selected rows to 
+        #second pass: set selected rows to zero
+        for row in zero_rows:
+            for j in range(n):
+                matrix[row][j] = 0
+
+        for col in zero_cols:
+            for i in range(m):
+                matrix[i][col] = 0
+
+         
 
 
 class Matrix:
