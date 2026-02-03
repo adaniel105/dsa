@@ -1,3 +1,31 @@
+
+//computing psums
+//https://judge.yosupo.jp/problem/static_range_sum 
+#include <bits/stdc++.h>
+using namespace std;
+
+//psum computation
+vector<long long>psum(const vector<long long> &arr){
+    vector<long long>p(arr.size() + 1);
+    (for i = 0; i < arr.size(); i++){ p[i + 1] = p[i] + arr[i] };
+
+    return p;
+}
+
+int main(){
+    int N, Q;
+    cin >> N >> Q;
+    vector<int>a(N);
+    for (int i = 0; i < N; i++){ cin >> a[i] }
+    vector<long long> sums = psum(a);
+    for (int i=0;i<Q;i++){
+        int l,r;
+        cin >> l >> r;
+        cout << sums[l] - sums[r] << "\n";
+    }
+}
+
+
 //6/10. unoptimized soln.
 //https://cses.fi/problemset/task/1662
 #include <bits/stdc++.h>
