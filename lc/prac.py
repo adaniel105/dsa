@@ -6,18 +6,19 @@ class Solution:
         zero_rows = set()
         zero_cols = set()
 
-        ##first pass
+        ##identify rols and cols with zeroes
         for i in range(m):
             for j in range(n):
                 if matrix[i][j] == 0:
                     zero_rows.add(m)
                     zero_cols.add(n)
         
-        #second pass: set selected rows to zero
+        #set selected rows to zero
         for row in zero_rows:
             for j in range(n):
                 matrix[row][j] = 0
-
+        
+        #set cols to zero
         for col in zero_cols:
             for i in range(m):
                 matrix[i][col] = 0
