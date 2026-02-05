@@ -1,3 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+void setIO(string name = "") {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	if (!name.empty()) {
+		freopen((name + ".in").c_str(), "r", stdin);
+		freopen((name + ".out").c_str(), "w", stdout);
+	}
+}
+
+int main(){
+    setIO("hps");
+    int n;
+    cin >> n;
+    vector<int>hooves(n + 1); vector<int>scissors(n + 1); vector<int>paper(n + 1);
+    for (int i = 1; i<=n; i++){
+    //precompute pfx sums as you read them in
+        hooves[i] += hooves[i-1];
+        scissors[i] += scissors[i-1];
+        paper[i] += paper[i - 1];
+
+        //encoding the winning move to find out which one wins her the most
+        char action;
+        cin >> action;
+        if(action == 'P'){
+            scissors[i]++;
+        }else if(action == 'S'){
+            hooves[i]++;
+        }else if(action == 'H'){
+            paper[i]++;
+        }	
+    }
+	
+    int highest = 0;
+    for(int i=1; i<=n;i++){
+		//find out which move wins her the most for the first x games
+        int before_swap = max({hooves[i], paper[i], scissors[i]});
+		//find out which wins her the most after (N - x)
+        int after_swap = max({hooves[n] - hooves[i], paper[n]- paper[i], scissors[n] - scissors[i]});
+        highest = max(highest, before_swap + after_swap);
+    }
+    cout << highest << endl;
+}
+
+
 
 //computing psums
 //https://judge.yosupo.jp/problem/static_range_sum 
