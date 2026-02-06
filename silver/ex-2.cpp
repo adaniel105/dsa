@@ -1,6 +1,6 @@
 //do more math basically
 //precompute and group p[i] - i and check were the prefixes are the same value
-//why do we calc res += x(x-1)/2?
+//for all values of p[i] - i, if same value as prefix, it's a valid subarray, res+= x(x-1)/2 
 //implement later
 
 
