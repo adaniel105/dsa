@@ -1,3 +1,9 @@
+//do more math basically
+//precompute and group p[i] - i and check were the prefixes are the same value
+//why do we calc res += x(x-1)/2?
+//implement later
+
+
 #include <bits/stdc++.h>
 using namespace std;
 void setIO(string name = "") {
