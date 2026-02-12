@@ -1,6 +1,6 @@
 //<1300 PROBLEMS //
 
-//https://codeforces.com/problemset/problem/266/B (passes inputs but fails on tc6, later)
+//https://codeforces.com/problemset/problem/266/B (incomplete)
 #include <bits/stdc++.h>
 using namespace std;
 
