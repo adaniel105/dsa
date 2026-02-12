@@ -1,3 +1,48 @@
+//<1300 PROBLEMS //
+
+//https://codeforces.com/problemset/problem/266/B (passes inputs but fails on tc6, later)
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,t;
+    char s;
+    cin >> n >> t;
+    char arr[n] = {0};
+    int boys[n] = {0};
+
+    for(int i = 0; i < n; i++){
+        cin >> s;
+        arr[i] = s;
+        if(s =='B'){
+            boys[i] = 1;
+        }
+    }
+
+    for (int i = 0; i < n; i++){
+        if(boys[i] == 1){
+            int offset = i;
+            for(int j = 0; j < t; j++){
+                if(arr[offset + 1] == 'G'){
+                    char swp = arr[offset];
+                    arr[offset] = arr[offset + 1];
+                    arr[offset+1] = swp;
+                    offset++;
+                }
+            }
+        }
+
+    }
+
+    for(int i = 0; i < n; i++){
+        cout << arr[i];
+    }
+
+
+}
+
+
+
 
 //https://usaco.org/index.php?page=viewproblem2&cpid=689
 #include <bits/stdc++.h>
