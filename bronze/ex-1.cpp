@@ -1,5 +1,101 @@
 //<1300 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/275/A
+//ugly simulation problem
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    int n;
+    bool state = true;
+    int arr[9][9];
+    int state_arr[9][9];
+
+    for(int i = 0; i < 3; i++){
+        for(int j =0; j < 3; j++){
+            cin >> arr[i][j];
+            state_arr[i][j] = 1;
+        }
+    }
+
+    for(int i = 0; i < 3; i++){
+        for(int j =0; j < 3; j++){
+            if(arr[i][j] > 0){
+                for(int k = 0; k < arr[i][j]; k++){
+                    if(i == 0 && j == 0){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i+1][j] = !state_arr[i+1][j];
+                        state_arr[i][j+1] = !state_arr[i][j+1];
+                    }
+
+                    if(i == 0 && j == 1){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i+1][j] = !state_arr[i+1][j];
+                        state_arr[i][j+1] = !state_arr[i][j+1];
+                        state_arr[i][j-1] = !state_arr[i][j-1];
+                    }
+
+                    if(i == 0 && j == 2 ){    
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i+1][j] = !state_arr[i+1][j];
+                        state_arr[i][j-1] = !state_arr[i][j-1];
+                    }
+
+                    if(i == 1 && j == 0){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i-1][j] = !state_arr[i-1][j];
+                        state_arr[i+1][j] = !state_arr[i+1][j];
+                        state_arr[i][j+1] = !state_arr[i][j+1];
+                    }
+
+                    if( i == 1 && j == 1){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i-1][j] = !state_arr[i-1][j];
+                        state_arr[i+1][j] = !state_arr[i+1][j];
+                        state_arr[i][j-1] = !state_arr[i][j-1];
+                        state_arr[i][j+1] = !state_arr[i][j+1];
+                    }
+
+                    if(i == 1 && j == 2){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i-1][j] = !state_arr[i-1][j];
+                        state_arr[i+1][j] = !state_arr[i+1][j];
+                        state_arr[i][j-1] = !state_arr[i][j-1];
+                    }
+
+                    if(i == 2 && j == 0){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i-1][j] = !state_arr[i-1][j];
+                        state_arr[i][j+1] = !state_arr[i][j+1];
+                    }
+
+                    if(i == 2 && j == 1){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i-1][j] = !state_arr[i-1][j];
+                        state_arr[i][j-1] = !state_arr[i][j-1];
+                        state_arr[i][j+1] = !state_arr[i][j+1];
+                    }
+
+                    if(i == 2 && j == 2){
+                        state_arr[i][j] = !state_arr[i][j];
+                        state_arr[i-1][j] = !state_arr[i-1][j];
+                        state_arr[i][j-1] = !state_arr[i][j-1];
+                    }
+                }    
+            }
+        }
+    }
+
+            cout << state_arr[0][0] << state_arr[0][1] << state_arr[0][2] << endl;
+            cout << state_arr[1][0] << state_arr[1][1] << state_arr[1][2] << endl;
+            cout << state_arr[2][0] << state_arr[2][1] << state_arr[2][2] << endl;
+
+
+}
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
