@@ -1,4 +1,44 @@
 //<1300 PROBLEMS //
+
+//https://codeforces.com/problemset/problem/110/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    long long n = 0;
+    int res = 0, count = 0, count_digit = 0;
+    bool result = false;
+    cin >> n;
+
+    while(n != 0){
+        res = n % 10;
+        if(res == 4 || res == 7){  
+            count++;
+        }
+        n = n / 10;
+    }
+
+    while(count != 0){
+        count_digit = count % 10;
+        if(count_digit == 4 || count_digit == 7 ){
+            result = true;
+        }else{
+            // cout << count_digit << endl;
+            result = false;
+            break;
+        }
+        count = count / 10;
+    }
+    
+    if(result){
+        cout << "YES";
+    }else{
+        cout << "NO";
+    }
+}
+
+
+
 //https://codeforces.com/problemset/problem/281/A
 #include <bits/stdc++.h>
 using namespace std;
