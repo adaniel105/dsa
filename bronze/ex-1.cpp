@@ -1,4 +1,50 @@
 //<1300 PROBLEMS //
+//https://codeforces.com/problemset/problem/281/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string s, res;
+    cin >> s;
+
+    s[0] = toupper(s[0]);
+
+    cout << s << endl;
+}
+
+//https://codeforces.com/problemset/problem/59/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string s, res;
+    int upper = 0, lower = 0;
+    cin >> s;
+
+    for(int i = 0; i < s.size(); ++i){
+        if (isupper(s[i])){
+            ++upper;
+        }
+        if(islower(s[i])){
+            ++lower;
+        }
+     }
+    if(upper > lower){
+        for(int i = 0; i < s.size(); ++i){
+            res += toupper(s[i]);
+        }
+        cout << res << endl;
+    }
+ 
+    if(lower >= upper){
+        for(int i = 0; i < s.size(); ++i){
+            res += tolower(s[i]);
+        }
+        cout << res << endl;
+    }
+}
+
+
 
 //https://codeforces.com/problemset/problem/275/A
 //ugly simulation problem
