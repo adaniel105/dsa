@@ -1,5 +1,57 @@
 //<1300 PROBLEMS //
 
+
+//https://codeforces.com/problemset/problem/58/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string match = "hello";
+    string res;
+    string s;
+    cin >> s;
+
+    int j = 0;
+    for(int i = 0; i < match.size(); i++){
+        while (j < s.size() && match[i] != s[j]){
+            j++;
+        }
+        if(j >= s.size()){
+            res = "";  
+            break;
+        }
+        if(match[i] == s[j]){
+            res+= s[j];
+            j++;
+        }
+    }
+
+    if(res == match){
+        cout << "YES";
+    }else{
+        cout << "NO";
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //https://codeforces.com/problemset/problem/110/A
 #include <bits/stdc++.h>
 using namespace std;
