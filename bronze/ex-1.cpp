@@ -1,5 +1,41 @@
 //<1300 PROBLEMS //
 
+=================================================================================================================================
+//https://codeforces.com/problemset/problem/445/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n , m;
+    cin >> n >> m;
+
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            char a;
+            cin >> a;
+            if(a == '-'){
+                cout << '-';
+            }else if(a == '.' && i % 2 == 1){
+                if(j % 2 == 0){
+                    cout << 'W';
+                }else{
+                    cout << 'B';
+                }
+            }else if(a == '.' && i % 2 == 0){
+                if(j % 2 == 0){
+                    cout << 'B';
+                }else{
+                    cout << 'W';
+                }
+            }    
+        }
+        cout << "\n";
+    }
+
+}
+
+=================================================================================================================================
+
 
 //https://codeforces.com/problemset/problem/58/A
 #include <bits/stdc++.h>
