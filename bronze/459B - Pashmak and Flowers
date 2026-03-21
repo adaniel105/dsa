@@ -3,7 +3,7 @@ http://codeforces.com/problemset/problem/459/B
 #include <bits/stdc++.h>
 using namespace std;
 
-//useful util
+
 long long n_choose_k(long long n, long long k) {
     k = min(k, n - k);
     long long ans = 1;
