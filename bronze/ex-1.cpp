@@ -24,7 +24,7 @@ int main(){
     //iterate through the active ones and find 
     map<ll, vector<ll>>::iterator p = mp.begin();
     while(p != mp.end()){ //.end is also a pointer so comparison is valid
-        ll k = p -> first; //deref for use
+        ll k = p -> first; //derefs mp[k].first for use
 
         if(mp[k].size() == 1){
             v.push_back({k, 0});
