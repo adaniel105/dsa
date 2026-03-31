@@ -1,4 +1,24 @@
-//<1300 PROBLEMS //
+//<1600 PROBLEMS //
+
+//https://codeforces.com/problemset/problem/276/B
+//pretty code
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+    string s;
+    cin >> s;
+
+    bool odd[26] = {false};
+    for(int i = 0; i < s.size(); ++i){
+        odd[s[i] - 'a'] = !odd[s[i] - 'a']; //true if seen
+    }
+
+    int odd_count = count(odd, odd + sizeof(odd) / sizeof(odd[0]), true);
+
+    cout << (odd_count <= 1 || odd_count % 2 == 1 ? "First" : "Second") << endl;
+    return 0;
+}
 
 =================================================================================================================================
 //https://codeforces.com/problemset/problem/445/A
