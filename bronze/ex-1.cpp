@@ -1,5 +1,84 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/298/B
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ 
+int main(){
+    ll t, x, y, e1, e2;
+    cin >> t >> x >> y >> e1 >> e2;
+    map<char, ll> mp;
+    int d_count = 0;
+
+        for(int i = 0; i < t; ++i){
+            mp['E'] = x + 1;
+            mp['S'] = y - 1;
+            mp['N'] = y + 1;
+            mp['W'] = x - 1;
+
+            char d;
+            cin >> d;
+            d_count++;
+            if(d == 'N' || d == 'S'){
+                if (abs(e2 - mp[d]) < abs(e2 - y)){
+                    y = mp[d];
+                }
+            }
+            
+            if (d == 'E' || d == 'W'){
+                if(abs(e1 - mp[d]) < abs(e1 - x)){                  
+                    x = mp[d];
+                }
+            }
+
+            if(x == e1 && y == e2){
+                cout << d_count;
+                return 0;
+            }
+        }                    
+
+    cout << "-1" << endl;
+}
+
+//https://codeforces.com/problemset/problem/431/B
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+    int arr[5][5];
+
+    for(int i = 0; i < 5; ++i){
+        for(int j = 0; j < 5; ++j){
+            cin >> arr[i][j];
+        }
+    }
+
+    int max_happiness = 0;
+    int curr;
+    vector<int> arrD = {1,2,3,4,5};
+
+    do{
+        curr = 0;
+        vector<int> temp = arrD;
+  
+        while(!temp.empty()){
+            //each pair talks, skip over last
+            for(int i = 0; i < 4; i+=2){
+                curr += (arr[temp[i] - 1][temp[i + 1] - 1] + arr[temp[i+1] - 1][temp[i] - 1]);
+            }
+            temp.erase(temp.begin(), temp.begin() + 1);
+        }
+
+        max_happiness = max(curr, max_happiness);
+
+    }while(next_permutation(arrD.begin(), arrD.end()));
+
+    cout << max_happiness;
+
+}
+
+
 //https://codeforces.com/problemset/problem/352/B
 
 #include <bits/stdc++.h>
