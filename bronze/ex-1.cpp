@@ -1,5 +1,37 @@
 //<1600 PROBLEMS //
 
+
+//https://codeforces.com/problemset/problem/222/A
+#include <bits/stdc++.h>
+using namespace std;
+ 
+ //cleaner solve than mine
+int main(){
+    int n, k; int last = 0;
+    cin >> n >> k;
+    int y = 1;
+ 
+    for(int i = 0; i < n; i++){
+        int x;
+        cin >> x;
+        if(x == last){
+            y++;
+        }else{
+            y = 1;
+        }
+        last = x;
+    }
+
+    //the overlap (n - y >= k) is the number of deletions we can make
+    //until the array is completely similar. if it doesn't then we can't
+    if((y+k) > n){
+        cout << n - y;
+    }else{
+        cout << -1;
+    }
+
+}
+
 //https://codeforces.com/problemset/problem/298/B
 #include <bits/stdc++.h>
 using namespace std;
