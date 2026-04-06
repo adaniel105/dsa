@@ -28,7 +28,7 @@ int main() {
     //count number of mins and maxes present
     mi_c = count(A.begin(), A.end(), mi), mx_c = count(A.begin(), A.end(), mx);
 
-    //product of mins and maxes if we can't find pairs OR we are simply saying N choose 2 (nCr), where n is the number of pairs == mi_c == mx_c
+    // number of pairs is mostly always product unless set is equal then choose 2
     long long ans = (mi != mx ? mi_c * mx_c : n_choose_k(mi_c, 2));
     cout << abs(mx - mi) << " " << ans << "\n";
 }
