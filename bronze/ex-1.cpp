@@ -1,5 +1,48 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/186/A
+//looks haram
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+    string s1, s2;
+    cin >> s1 >> s2;
+    int diff = 0;
+    vector<char> swaps;
+ 
+    if(s1.size() != s2.size()){
+        cout << "NO";
+        return 0;
+ 
+    }else{
+        for(int i = 0; i < s2.size(); ++i){
+            if(s1[i] != s2[i]){
+                diff++;
+                swaps.push_back(s1[i]);
+            };
+        }
+    }
+ 
+    if(diff == 1 || diff > 2){
+        cout << "NO";
+        return 0;
+    }else{
+        for(int i = 0; i < s2.size(); ++i){
+            if(s1[i] != s2[i]){
+                s1[i] = swaps[1]; 
+                swaps[1] = swaps[0];
+            };
+        }
+    }
+ 
+    if(s1 == s2){
+        cout << "YES";
+    }else{
+        cout << "NO";
+    }
+    
+}
 
 //https://codeforces.com/problemset/problem/222/A
 #include <bits/stdc++.h>
