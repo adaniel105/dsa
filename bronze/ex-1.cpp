@@ -155,7 +155,6 @@ int main(){
 
 
 //https://codeforces.com/problemset/problem/352/B
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -177,6 +176,7 @@ int main(){
     
     //iterate through the active ones and find 
     map<ll, vector<ll>>::iterator p = mp.begin();
+	//PLEASE NOTE FOR POINTER ARITHMETIC !!!
     while(p != mp.end()){ //.end is also a pointer so comparison is valid
         ll k = p -> first; //derefs mp[k].first for use
 
