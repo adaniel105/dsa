@@ -1,5 +1,32 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/258/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string n;
+    bool iszero = false;
+    cin >> n;
+
+
+    for(int i = 0; i < n.size(); ++i ){
+        if(n[i] == '0'){
+            n.erase(i,1);
+            iszero = !iszero;
+            break;
+        }
+        
+        if(i + 1 == n.size() && !iszero) {
+            n.pop_back();
+            break; //if string is full of ones
+        }
+    }
+
+    cout << n;
+
+}
+======================================================================================================================================
 //https://codeforces.com/problemset/problem/186/A
 //looks haram
 #include <bits/stdc++.h>
