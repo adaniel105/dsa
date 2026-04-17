@@ -1,5 +1,38 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/296/A
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    int n;
+    cin >> n;
+    int arr[100];
+
+    int continuous(1), max_continuous(1);
+
+    for(int i = 0; i < n; ++i){
+        cin >> arr[i];
+    }
+
+    sort(arr, arr+n);
+
+    for(int i = 1; i < n; ++i){
+        if(arr[i] == arr[i-1]){
+            continuous += 1;
+            max_continuous = max(continuous, max_continuous);
+        }else{
+            continuous = 1;
+        }
+    }
+
+    //basically if we can arrange all of the non-continuous numbers between the cells in place
+    // +1 so number doeesn;t round down if odd
+    cout << (max_continuous <= (n + 1)/ 2 ? "YES" : "NO");
+}
+
+
 //https://codeforces.com/problemset/problem/258/A
 #include <bits/stdc++.h>
 using namespace std;
