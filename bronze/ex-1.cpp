@@ -1,5 +1,39 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/18/C
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int n;
+    cin >> n;
+    int res = 0;
+    int s1 = 0; int s2 = 0;
+    int arr[n];
+
+    for(int i = 0; i < n; ++i){
+        cin >> arr[i];
+        s2 += arr[i];
+    }
+
+
+    //don't count final one
+    for(int i = 0; i < n -1 ; ++i){
+        s1 += arr[i];
+        s2 -= arr[i];
+
+        if(s1 == s2){
+            res++;
+        }
+    }
+
+    cout << res;
+}
+
 //https://codeforces.com/problemset/problem/296/A
 #include <bits/stdc++.h>
 using namespace std;
