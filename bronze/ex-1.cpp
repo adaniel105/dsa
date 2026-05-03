@@ -1,5 +1,64 @@
 //<1600 PROBLEMS //
 
+
+//https://codeforces.com/problemset/problem/231/C
+#include <bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+
+bool solve(ll i, ll mid, ll k, vector<ll>& pfx, ll val){
+    ll cost = (i - mid + 1) * val - (pfx[i] - pfx[mid-1]);
+    return cost <= k;    
+}
+
+
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);    
+    int n, k;
+    cin >> n >> k;
+    vector<ll>arr(n+1, 0);
+    //this is so the 0-index doesn't get placed in front when u use negative numbers
+    arr[0] = -1e18;
+    vector<ll>pfx(n+1, 0);
+    for(int i = 1; i <= n; ++i){
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+    arr[0] = 0;
+
+    for(int i = 1; i <= n; ++i){
+        pfx[i] = arr[i] + pfx[i - 1];        
+    }
+
+
+    ll max_idx = 1, res = arr[1];
+    for(int i = 2; i <= n; ++i){
+        ll l = 1, r = i, cnt;
+        while((r - l) > 1){
+            ll mid = l + (r - l) / 2;
+            if(solve(i, mid, k, pfx, arr[i])) {
+                r = mid;
+            }
+            else{
+                l = mid + 1;
+            }
+        }
+
+        if(solve(i, l, k, pfx, arr[i])){
+            cnt = (i - l + 1);
+        }else 
+            cnt = (i - r + 1);
+        if(cnt > max_idx){
+            max_idx = cnt; res = arr[i];
+        }
+    }
+    cout << max_idx << " " << res;
+
+}
+
+
 //https://codeforces.com/problemset/problem/18/C
 #include <bits/stdc++.h>
 using namespace std;
