@@ -1,5 +1,31 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/660/B
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<int> ans;
+    for (int i = 0; i < n; i++) {
+        //we 0 index here because we kind of want to use the i
+        int lw = 2*i;
+        int la = 2*(n+i);
+        int ra = 2*(n+i)+1;
+        int rw = 2*i+1;
+
+        if (la < m) ans.push_back(la + 1);
+        if (lw < m) ans.push_back(lw + 1);
+        if (ra < m) ans.push_back(ra + 1);
+        if (rw < m) ans.push_back(rw + 1);
+    }
+
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
+    }
+}
 
 //https://codeforces.com/problemset/problem/231/C
 #include <bits/stdc++.h>
