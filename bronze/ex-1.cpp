@@ -1,5 +1,49 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/660/A
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+int main() {
+    ll n, swp;
+    vector<ll>arr;
+    int count = 0;
+    cin >> n;
+
+
+    for(int i = 0; i < n; ++i){
+        ll x;
+        cin >> x;
+        arr.push_back(x);
+    }
+
+
+    if(n == 1){
+        cout << 0 << endl;
+        cout << arr[0];
+        return 0;
+    }
+
+
+    //rare place where recomputation of arr_sz is actually useful
+    for(ll i = 0; i < arr.size() - 1; i++){
+        if(arr[i] != 0 && arr[i+1] != 0 && gcd(arr[i], arr[i+1]) > 1){
+            swp = arr[i+1];
+            arr[i+1] = 1;
+            arr.insert(arr.begin() + i + 2, swp);
+            count++;
+        }
+    }
+    
+    cout << count << endl;
+    for(auto x : arr) cout << x << " ";
+
+    return 0;
+}
+
+
 //https://codeforces.com/problemset/problem/660/B
 #include<bits/stdc++.h>
 using namespace std;
