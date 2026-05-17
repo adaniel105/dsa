@@ -1,5 +1,18 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/659/D
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+
+    cin >> n;
+
+    cout << ((n - 4) / 2) << endl;
+    return 0;
+}
+
+
 //https://codeforces.com/problemset/problem/660/A
 #include <bits/stdc++.h>
 using namespace std;
