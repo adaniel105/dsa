@@ -1,5 +1,51 @@
 //<1600 PROBLEMS //
 
+//https://codeforces.com/problemset/problem/658/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, c;
+    int li = 0; int rd = 0;
+    int time_l = 0; int time_r = 0;
+    cin >> n >> c;
+    int q[n], t[n];
+
+    for(int i = 0; i < n; ++i){
+        cin >> q[i];
+    }
+
+    for(int i = 0; i < n; ++i){
+        cin >> t[i];
+    }
+
+    for(int i = 0; i < n; ++i){
+        time_l += t[i];
+        li += max(0, q[i] - (c * time_l));
+    }
+
+    for(int i = n - 1; i >= 0; i--){
+        time_r += t[i];
+        rd += max(0, q[i] - (c * time_r));
+    }
+
+    if(li > rd){
+        cout << "Limak";
+    }
+
+    if(li < rd){
+        cout << "Radewoosh";
+    }
+
+    if(li == rd){
+        cout << "Tie";
+    }
+
+    return 0;
+
+}
+
+
 //https://codeforces.com/problemset/problem/659/D
 #include <bits/stdc++.h>
 using namespace std;
